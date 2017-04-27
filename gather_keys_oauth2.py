@@ -71,14 +71,12 @@ class OAuth2Server:
             threading.Timer(1, cherrypy.engine.exit).start()
 
 
-# if __name__ == '__main__':
-def oauth(client_id, client_secret):
-    # if not (len(sys.argv) == 3):
-    #     print("Arguments: client_id and client_secret")
-    #     sys.exit(1)
+if __name__ == '__main__':
+    if not (len(sys.argv) == 3):
+        print("Arguments: client_id and client_secret")
+        sys.exit(1)
 
-    # server = OAuth2Server(*sys.argv[1:])
-    server = OAuth2Server(client_id, client_secret)
+    server = OAuth2Server(*sys.argv[1:])
     server.browser_authorize()
 
     profile = server.fitbit.user_profile_get()
